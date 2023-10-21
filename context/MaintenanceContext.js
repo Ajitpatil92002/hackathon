@@ -77,7 +77,7 @@ export const MaintenanceProvider = ({ children }) => {
 
   const connectWallet = async () => {
     try {
-      if (!window.ethereum) return "Install MetaMask";
+      if (!window.ethereum) return alert("Install MetaMask");
 
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
