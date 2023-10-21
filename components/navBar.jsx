@@ -27,18 +27,23 @@ const NavBar = () => {
     <>
       <header className="text-gray-600 body-font border shadow-md">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <span className="ml-3 text-xl">Maintence App</span>
+          <span className="ml-3 text-xl text-white">Maintence App</span>
 
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center"></nav>
           {currentUser ? (
-            <div>
-              <p>{currentUser.slice(0, 25)}...</p>
-              <button onClick={disconnectWallet}>Disconnect Wallet</button>
+            <div className="flex items-center gap-4">
+              <p className="text-white">{currentUser.slice(0, 25)}...</p>
+              <button
+                onClick={() => disconnectWallet()}
+                className=" font-semibold rounded bg-gray-100 text-gray-800 h-10 w-32 text-sm"
+              >
+                Disconnect Wallet
+              </button>
             </div>
           ) : (
             <button
               onClick={() => connectWallet()}
-              className="px-8 py-3 font-semibold rounded dark:bg-gray-100 dark:text-gray-800"
+              className=" font-semibold rounded bg-gray-100 text-gray-800 h-10 w-32 text-sm"
             >
               Connect Wallet
             </button>

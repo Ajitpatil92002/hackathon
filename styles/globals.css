@@ -1,3 +1,202 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 224 71% 4%;
+        --foreground: 213 31% 91%;
+
+        --muted: 223 47% 11%;
+        --muted-foreground: 215.4 16.3% 56.9%;
+
+        --accent: 216 34% 17%;
+        --accent-foreground: 210 40% 98%;
+
+        --popover: 224 71% 4%;
+        --popover-foreground: 215 20.2% 65.1%;
+
+        --border: 216 34% 17%;
+        --input: 216 34% 17%;
+
+        --card: 224 71% 4%;
+        --card-foreground: 213 31% 91%;
+
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 1.2%;
+
+        --secondary: 222.2 47.4% 11.2%;
+        --secondary-foreground: 210 40% 98%;
+
+        --destructive: 0 63% 31%;
+        --destructive-foreground: 210 40% 98%;
+
+        --ring: 216 34% 17%;
+
+        --radius: 0.5rem;
+
+    }
+
+
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}
+
+@layer components {
+
+    .main {
+        width: 100vw;
+        min-height: 100vh;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        padding: 120px 24px 160px 24px;
+        pointer-events: none;
+    }
+
+    .main:before {
+        position: absolute;
+        content: "";
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    .main:after {
+        content: "";
+        background-image: url("/images/grid.svg");
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        opacity: 0.5;
+        filter: invert(1);
+    }
+
+    .gradient {
+        height: fit-content;
+        z-index: 3;
+        width: 100%;
+        max-width: 640px;
+        background-image: radial-gradient(at 27% 37%,
+                hsla(215, 98%, 61%, 1) 0px,
+                transparent 0%),
+            radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
+            radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
+            radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
+            radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
+            radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+            radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        filter: blur(100px) saturate(150%);
+        top: 80px;
+        opacity: 0.15;
+    }
+
+    .tracking-in-expand-fwd {
+        -webkit-animation: tracking-in-expand-fwd 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        animation: tracking-in-expand-fwd 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    }
+
+    @-webkit-keyframes tracking-in-expand-fwd {
+        0% {
+            letter-spacing: -0.5em;
+            -webkit-transform: translateZ(-700px);
+            transform: translateZ(-700px);
+            opacity: 0;
+        }
+
+        40% {
+            opacity: 0.6;
+        }
+
+        100% {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes tracking-in-expand-fwd {
+        0% {
+            letter-spacing: -0.5em;
+            -webkit-transform: translateZ(-700px);
+            transform: translateZ(-700px);
+            opacity: 0;
+        }
+
+        40% {
+            opacity: 0.6;
+        }
+
+        100% {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            opacity: 1;
+        }
+    }
+
+
+
+    .wave {
+        animation-name: wave-animation;
+        /* Refers to the name of your @keyframes element below */
+        animation-duration: 2.5s;
+        /* Change to speed up or slow down */
+        animation-iteration-count: infinite;
+        /* Never stop waving :) */
+        transform-origin: 70% 70%;
+        /* Pivot around the bottom-left palm */
+        display: inline-block;
+    }
+
+    @keyframes wave-animation {
+        0% {
+            transform: rotate(0.0deg)
+        }
+
+        10% {
+            transform: rotate(14.0deg)
+        }
+
+        /* The following five values can be played with to make the waving more or less extreme */
+        20% {
+            transform: rotate(-8.0deg)
+        }
+
+        30% {
+            transform: rotate(14.0deg)
+        }
+
+        40% {
+            transform: rotate(-4.0deg)
+        }
+
+        50% {
+            transform: rotate(10.0deg)
+        }
+
+        60% {
+            transform: rotate(0.0deg)
+        }
+
+        /* Reset for the last half to pause */
+        100% {
+            transform: rotate(0.0deg)
+        }
+    }
+}
