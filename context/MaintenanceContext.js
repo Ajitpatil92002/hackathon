@@ -29,11 +29,9 @@ export const MaintenanceProvider = ({ children }) => {
       const signer = provider.getSigner();
       const contract = fetchContract(signer);
 
-      await contract.createMaintenanceRequest(
-        title,
-        description,
-        maintenanceType
-      );
+      console.log(title, description, maintenanceType);
+
+      await contract.createMaintenanceRequest(title, description, 0);
 
       const requests = await contract.maintenanceRequests();
       setMaintenanceRequests(requests);

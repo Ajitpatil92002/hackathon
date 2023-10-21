@@ -2,10 +2,13 @@ import React from "react";
 import Modal from "react-modal";
 import { Input } from "./input";
 
-import { createMaintenanceRequest } from "../context/MaintenanceContext";
+import { MaintenanceContext } from "../context/MaintenanceContext";
 
 const Header = ({ title, btnText, btnLink }) => {
   let subtitle;
+
+  const { createMaintenanceRequest, currentUser } =
+    React.useContext(MaintenanceContext);
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const [dtitle, setTitle] = React.useState("");
@@ -24,7 +27,7 @@ const Header = ({ title, btnText, btnLink }) => {
 
   async function OnSubmitHandler(e) {
     e.preventDefault();
-    console.log(dtitle, description, type);
+    // console.log(dtitle, description, type);
     await createMaintenanceRequest(dtitle, description, type);
   }
 
